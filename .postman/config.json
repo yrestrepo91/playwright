@@ -1,0 +1,14 @@
+{
+  "workspace": {
+    "id": "5e298ff4-d31a-4b95-851a-caef12ae9e57"
+  },
+  "entities": {
+    "collections": [
+      "..\\postman\\collections\\QA - Gestión de Turnos.postman_collection.json"
+    ],
+    "environments": [],
+    "specs": [],
+    "flows": [],
+    "globals": []
+  }
+}

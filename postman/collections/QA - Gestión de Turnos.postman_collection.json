@@ -1,0 +1,160 @@
+{
+  "info": {
+    "_postman_id": "2b0152d6-2584-43a1-8e0d-75149b7d86dc",
+    "name": "QA - Gestión de Turnos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50528825",
+    "_collection_link": "https://ingyrestrepo91-7276902.postman.co/workspace/5e298ff4-d31a-4b95-851a-caef12ae9e57/collection/50528825-2b0152d6-2584-43a1-8e0d-75149b7d86dc?action=share&source=collection_link&creator=50528825"
+  },
+  "item": [
+    {
+      "name": "Crear Turno - Success (Created / Open)",
+      "id": "63f62491-f592-4ad3-88c6-35a882f94e38",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"distributionCenterId\": 12,\n  \"date\": \"2025-03-10\",\n  \"time\": \"09:30\",\n  \"projectedPackages\": 1200,\n  \"createdBy\": \"admin01\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/turns",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "turns"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear Turno - Duplicate (400 / 409)",
+      "id": "1c34a1de-e712-4da2-9eb6-1794aecaa201",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"distributionCenterId\": 12,\n  \"date\": \"2025-03-10\",\n  \"time\": \"09:30\",\n  \"projectedPackages\": 1200,\n  \"createdBy\": \"admin01\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/turns",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "turns"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Editar proyección paquetes ≥150 (PUT)",
+      "id": "6f464c7b-b5bb-4cfb-b11c-329c97a21f4f",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"newProjectedPackages\": 2400\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/turns/{{turnId}}/packages",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "turns",
+            "{{turnId}}",
+            "packages"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Editar proyección paquetes <150 (PUT) → 422",
+      "id": "7241f7a0-c58c-4eb9-96d3-7678ba6b4d53",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"newProjectedPackages\": 1250\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/turns/{{turnId}}/packages",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "turns",
+            "{{turnId}}",
+            "packages"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "id": "d46b479d-5c02-4f40-bb95-6f8079c8a4c6",
+      "key": "baseUrl",
+      "value": "https://api.miapp.com"
+    },
+    {
+      "id": "6e497d20-8f54-401c-8410-0b74d7bce731",
+      "key": "token",
+      "value": "<token>"
+    },
+    {
+      "id": "620e7a61-7d3a-43e2-9a0a-11110ab91519",
+      "key": "turnId",
+      "value": "91"
+    }
+  ]
+}
